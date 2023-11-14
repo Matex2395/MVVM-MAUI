@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoAppMAUI.ProductoPage"
+             Title="ProductoPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <HorizontalStackLayout BackgroundColor="DarkBlue">
+                <Image Source="dotnet_bot.png" HeightRequest="50" WidthRequest="100" />
+                <Label Text="Lista Productos" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />
+            </HorizontalStackLayout>
+            <ListView x:Name="ListaProductos" ItemsSource="{Binding Productos}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal" Spacing="30">
+                                <Image Source="{Binding Imagen}" HeightRequest="100" WidthRequest="100" />
+                                <StackLayout VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding Nombre}" FontSize="20" TextColor="Black" />
+                                    <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="20" TextColor="Black"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
