@@ -63,7 +63,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="DetalleProductoPage.xaml.cs">
+	    <DependentUpon>DetalleProductoPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="EditarProductoPage.xaml.cs">
+	    <DependentUpon>EditarProductoPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="DetalleProductoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="EditarProductoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="NuevoProductoPage.xaml">

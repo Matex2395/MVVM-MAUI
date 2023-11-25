@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoAppMAUI.DetalleProductoPage"
+             Title="DetalleProductoPage">
+    <VerticalStackLayout>
+        <Image Source="{Binding Imagen}"
+               HorizontalOptions="Center"
+               HeightRequest="200"/>
+        <Label x:Name="Nombre"
+               Text="Nombre"
+               FontSize="32"
+               HorizontalOptions="Center"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Cantidad: "
+                    FontSize="18"/>
+            <Label x:Name="Cantidad"
+                    Text="Cantidad"
+                    FontSize="18"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Decripción: "
+                    FontSize="18"/>
+            <Label x:Name="Descripcion"
+                    Text="Descripcion"
+                    FontSize="18"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Borrar"
+                Clicked="OnClickBorrar"
+                FontSize="20"
+                Margin="5"
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="Red"/>
+            <Button Text="Editar"
+                Clicked="OnClickEditar"
+                FontSize="20"
+                Margin="5"
+                HorizontalOptions="FillAndExpand"
+                TextColor="Black"
+                BackgroundColor="Orange"/>
+        </StackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

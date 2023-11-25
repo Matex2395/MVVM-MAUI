@@ -9,7 +9,7 @@
                 <Image Source="dotnet_bot.png" HeightRequest="50" WidthRequest="100" />
                 <Label Text="Lista Productos" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />
             </HorizontalStackLayout>
-            <ListView x:Name="ListaProductos" ItemsSource="{Binding Productos}" HasUnevenRows="True">
+            <ListView x:Name="ListaProductos" ItemsSource="{Binding Productos}" HasUnevenRows="True"  ItemSelected="OnClickShowDetails">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

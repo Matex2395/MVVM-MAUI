@@ -13,6 +13,13 @@ namespace ProductoAppMAUI
 
         private async void OnClickGuardarProducto(object sender, EventArgs e)
         {
+
+            //Verificar que el formulario no está vacío
+            if (string.IsNullOrEmpty(NombreEntry.Text) || string.IsNullOrEmpty(DescripcionEntry.Text) || string.IsNullOrEmpty(PrecioEntry.Text))
+            {
+                await DisplayAlert("Error", "Debe completar todos los campos.", "OK");
+                return;
+            }
             int id = Utils.Utils.ListaProductos.Count + 1;
 
             Utils.Utils.ListaProductos.Add(new Producto
@@ -32,6 +39,10 @@ namespace ProductoAppMAUI
 
             // Mostrar una alerta indicando que el producto se agregó correctamente
             await DisplayAlert("Éxito", "El producto se agregó correctamente.", "OK");
+
+            await Navigation.PopAsync();
+            
+            
           
         }
 
