@@ -1,19 +1,28 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ProductoAppMAUI.Models;
+using ProductoAppMAUI.Service;
+using System.Collections.ObjectModel;
 
 namespace ProductoAppMAUI;
 
 public partial class ProductoPage : ContentPage
 {
-
-	public ProductoPage()
+    private readonly APIService _APIService;
+	public ProductoPage(APIService apiservice)
 	{
 		InitializeComponent();
+        _APIService = apiservice;
 		ListaProductos.ItemsSource = Utils.Utils.ListaProductos;
 	}
-
-	private async void OnClickAgregar(object sender, EventArgs E)
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        List<Producto> ListaProducto = await _APIService.GetProductos();
+        var productos = new ObservableCollection<Producto>(ListaProducto);
+        ListaProductos.ItemsSource = productos;
+    }
+    private async void OnClickAgregar(object sender, EventArgs E)
 	{
         var toast = Toast.Make("Producto agregado", ToastDuration.Short, 14);
         await toast.Show();
@@ -25,7 +34,7 @@ public partial class ProductoPage : ContentPage
 
         await toast.Show();
         Producto producto = e.SelectedItem as Producto;
-        await Navigation.PushAsync(new DetalleProductoPage()
+        await Navigation.PushAsync(new DetalleProductoPage(_APIService)
         {
             BindingContext = producto,
         });

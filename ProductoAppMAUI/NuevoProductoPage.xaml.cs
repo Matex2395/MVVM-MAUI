@@ -1,12 +1,16 @@
 using ProductoAppMAUI.Models;
+using ProductoAppMAUI.Service;
 
 namespace ProductoAppMAUI
 {
     public partial class NuevoProductoPage : ContentPage
     {
+        private readonly APIService _APIService;
+        private readonly Producto _producto;
         public NuevoProductoPage()
         {
             InitializeComponent();
+            _APIService = new APIService();
         }
 
 
@@ -22,27 +26,15 @@ namespace ProductoAppMAUI
             }
             int id = Utils.Utils.ListaProductos.Count + 1;
 
-            Utils.Utils.ListaProductos.Add(new Producto
+            Producto producto = new Producto()
             {
                 IdProducto = id,
                 Nombre = NombreEntry.Text,
                 Descripcion = DescripcionEntry.Text,
-                Precio = Convert.ToDecimal(PrecioEntry.Text),
-                Stock = 10,
-                Imagen = "gazelle.png"
-            });
+                Precio = Convert.ToDecimal(PrecioEntry.Text)               
+            };
 
-            // Limpiar los campos de entrada después de agregar el producto
-            NombreEntry.Text = string.Empty;
-            DescripcionEntry.Text = string.Empty;
-            PrecioEntry.Text = string.Empty;
-
-            // Mostrar una alerta indicando que el producto se agregó correctamente
-            await DisplayAlert("Éxito", "El producto se agregó correctamente.", "OK");
-
-            await Navigation.PopAsync();
-            
-            
+            await _APIService.PostProducto(producto);
           
         }
 

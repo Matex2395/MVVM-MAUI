@@ -49,17 +49,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\background.jpg" />
 	  <None Remove="Resources\Images\gazelle.png" />
 	  <None Remove="Resources\Images\icon_about.png" />
 	  <None Remove="Resources\Images\icon_about_ios.png" />
+	  <None Remove="Resources\Images\icon_clipboard_list.svg" />
+	  <None Remove="Resources\Images\icon_home.svg" />
 	  <None Remove="Resources\Images\icon_notes.png" />
 	  <None Remove="Resources\Images\icon_notes_ios.png" />
+	  <None Remove="Resources\Images\icon_plus_circle.svg" />
+	  <None Remove="Resources\Images\mobile_application.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
 		<PackageReference Include="CommunityToolkit.Maui.Core" Version="6.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductoAppMAUI.Models
 {
-    internal class Producto
+    public class Producto
     {
         public int IdProducto { get; set; }
         public string Nombre { get; set; }

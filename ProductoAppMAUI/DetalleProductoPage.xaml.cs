@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Core;
 using ProductoAppMAUI.Models;
+using ProductoAppMAUI.Service;
 
 namespace ProductoAppMAUI;
 
@@ -7,11 +8,13 @@ public partial class DetalleProductoPage : ContentPage
 {
 
     private Producto _producto;
+    private readonly APIService _APIService;
 
-    public DetalleProductoPage()
+    public DetalleProductoPage(APIService apiservice)
 	{
 		InitializeComponent();
-	}
+        _APIService = apiservice;
+    }
 
     protected override void OnAppearing()
     {
@@ -25,7 +28,7 @@ public partial class DetalleProductoPage : ContentPage
 
     private async void OnClickBorrar(object sender, EventArgs e)
     {
-        Utils.Utils.ListaProductos.Remove(_producto);
+        await _APIService.DeleteProducto(_producto.IdProducto);
         await Navigation.PopAsync();
     }
 
@@ -34,7 +37,7 @@ public partial class DetalleProductoPage : ContentPage
         var toast = CommunityToolkit.Maui.Alerts.Toast.Make(_producto.Nombre, ToastDuration.Short, 14);
 
         await toast.Show();
-        await Navigation.PushAsync(new EditarProductoPage()
+        await Navigation.PushAsync(new EditarProductoPage(_APIService)
         {
             BindingContext = _producto,
         });

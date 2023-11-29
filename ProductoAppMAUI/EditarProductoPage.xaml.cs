@@ -1,4 +1,7 @@
+//using Java.Lang;
 using ProductoAppMAUI.Models;
+using ProductoAppMAUI.Service;
+//using static Android.Util.EventLogTags;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProductoAppMAUI
@@ -6,9 +9,12 @@ namespace ProductoAppMAUI
     public partial class EditarProductoPage : ContentPage
     {
         private Producto _producto;
-        public EditarProductoPage()
+
+        private readonly APIService _APIService;
+        public EditarProductoPage(APIService apiservice)
         {
             InitializeComponent();
+            _APIService = apiservice;
         }
 
         protected override void OnAppearing()
@@ -29,8 +35,9 @@ namespace ProductoAppMAUI
             if (_producto != null)
             {
                 _producto.Nombre = NombreEntry.Text;
-                _producto.Precio = Int32.Parse(PrecioEntry.Text);
                 _producto.Descripcion = DescripcionEntry.Text;
+                _producto.Precio = Convert.ToDecimal(PrecioEntry.Text);
+                await _APIService.PutProducto(_producto.IdProducto, _producto);
             }
             else
             {
@@ -40,12 +47,15 @@ namespace ProductoAppMAUI
                     IdProducto = 0,
                     Nombre = NombreEntry.Text,
                     Descripcion = DescripcionEntry.Text,
-                    Precio = Int32.Parse(PrecioEntry.Text)
+                    Precio = Convert.ToDecimal(PrecioEntry.Text),
                 };
 
-                Utils.Utils.ListaProductos.Add(producto);
+                await _APIService.PostProducto(producto);
+
+                //Utils.Utils.ListaProductos.Add(producto);
             }
             await Navigation.PopAsync();
+
 
         }
 
