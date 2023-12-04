@@ -1,5 +1,6 @@
-﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+
 
 namespace ProductoAppMAUI
 {
@@ -14,7 +15,9 @@ namespace ProductoAppMAUI
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                }).UseMauiCommunityToolkit();
+                    fonts.AddFont("Poppins-Regular.ttf","Poppins");
+                })
+                .UseMauiCommunityToolkit();
 
 #if DEBUG
 		builder.Logging.AddDebug();

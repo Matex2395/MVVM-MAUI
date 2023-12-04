@@ -1,4 +1,4 @@
-﻿using ProductoAppMAUI.Service;
+using ProductoAppMAUI.Service;
 
 namespace ProductoAppMAUI
 {
@@ -10,7 +10,7 @@ namespace ProductoAppMAUI
             APIService aPIService = new APIService();
 
             MainPage = new NavigationPage(new ProductoPage(aPIService));
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
             
         }
     }

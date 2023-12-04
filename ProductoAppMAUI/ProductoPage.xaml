@@ -6,24 +6,37 @@
     <ScrollView>
         <VerticalStackLayout>
             <HorizontalStackLayout BackgroundColor="DarkBlue">
-                <Image Source="dotnet_bot.png" HeightRequest="50" WidthRequest="100" />
+                <Image Source="vinilo1.png" HeightRequest="50" WidthRequest="100" />
                 <Label Text="Lista Productos" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />
             </HorizontalStackLayout>
+            <Button Text="Agregar Producto" Clicked="OnClickAgregarProducto" HorizontalOptions="Center" />
             <ListView x:Name="ListaProductos" ItemsSource="{Binding Productos}" HasUnevenRows="True"  ItemSelected="OnClickShowDetails">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal" Spacing="30">
-                                <Image Source="{Binding Imagen}" HeightRequest="100" WidthRequest="100" />
-                                <StackLayout VerticalOptions="CenterAndExpand">
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <!-- Columna flexible para el espacio restante -->
+                                    <ColumnDefinition Width="Auto" />
+                                    <!-- Columna para el botón -->
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Imagen}" HeightRequest="100" WidthRequest="100" Margin="0,0,10,0" />
+                                <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
                                     <Label Text="{Binding Nombre}" FontSize="20" TextColor="Black" />
                                     <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="20" TextColor="Black"/>
                                 </StackLayout>
-                            </StackLayout>
+                                <Button Grid.Column="3" Text="ADD TO CART" Clicked="OnClickBuy" WidthRequest="75" HeightRequest="40" VerticalOptions="Center" />
+                                <!-- Ancho y alto fijo para el botón, alineado a la derecha -->
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
+            <!-- Asegúrate de que el botón "Agregar Producto" esté alineado a la derecha -->
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

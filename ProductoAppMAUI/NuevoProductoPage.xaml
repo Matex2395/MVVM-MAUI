@@ -4,7 +4,7 @@
              x:Class="ProductoAppMAUI.NuevoProductoPage"
              Title="NuevoProductoPage">
     <VerticalStackLayout>
-        <HorizontalStackLayout BackgroundColor="DarkBlue">
+        <HorizontalStackLayout BackgroundColor="DarkOrange">
             <Image Source="dotnet_bot.png" HeightRequest="50" WidthRequest="100"/>
             <Label Text="Crear Producto" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
         </HorizontalStackLayout>
@@ -12,9 +12,10 @@
             <TableRoot>
                 <TableSection Title="Nuevo Producto">
                     <EntryCell x:Name="NombreEntry" Placeholder="Nombre"/>
+                    <EntryCell x:Name="StockEntry" Placeholder="Stock" Keyboard="Numeric"/>
                     <EntryCell x:Name="PrecioEntry" Placeholder="Precio" Keyboard="Numeric"/>
                     <EntryCell x:Name="DescripcionEntry" Placeholder="Descripcion"/>
-                </TableSection>
+                    </TableSection>
             </TableRoot>
         </TableView>
 

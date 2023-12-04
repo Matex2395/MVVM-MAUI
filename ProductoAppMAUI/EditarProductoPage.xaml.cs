@@ -26,6 +26,7 @@ namespace ProductoAppMAUI
                 NombreEntry.Text = _producto.Nombre;
                 PrecioEntry.Text = _producto.Precio.ToString();
                 DescripcionEntry.Text = _producto.Descripcion;
+                StockEntry.Text = _producto.Stock.ToString();
             }
         }
 
@@ -37,6 +38,7 @@ namespace ProductoAppMAUI
                 _producto.Nombre = NombreEntry.Text;
                 _producto.Descripcion = DescripcionEntry.Text;
                 _producto.Precio = Convert.ToDecimal(PrecioEntry.Text);
+                _producto.Stock = Convert.ToInt32(StockEntry.Text);
                 await _APIService.PutProducto(_producto.IdProducto, _producto);
             }
             else

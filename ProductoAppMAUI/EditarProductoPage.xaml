@@ -13,6 +13,7 @@
                 <TableSection Title="Datos Producto">
                     <EntryCell x:Name="NombreEntry" Placeholder="Nombre"/>
                     <EntryCell x:Name="PrecioEntry" Placeholder="Precio" Keyboard="Numeric"/>
+                    <EntryCell x:Name="StockEntry" Placeholder="Stock" Keyboard="Numeric"/>
                     <EntryCell x:Name="DescripcionEntry" Placeholder="Descripcion"/>
                 </TableSection>
             </TableRoot>
