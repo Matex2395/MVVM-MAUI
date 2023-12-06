@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoAppMAUI.Login"
+             Title="Login">
+    <VerticalStackLayout>
+        <HorizontalStackLayout BackgroundColor="DarkOrange">
+            <Image Source="dotnet_bot.png" HeightRequest="50" WidthRequest="100"/>
+            <Label Text="Iniciar Sesión" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
+        <TableView>
+            <TableRoot>
+                <TableSection Title="Iniciar Sesión">
+                    <EntryCell x:Name="UsernameEntry" Placeholder="Usuario"/>
+                    <EntryCell x:Name="PasswordEntry" Placeholder="Contraseña"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+
+        <Button Text="Iniciar Sesión"
+            Clicked="OnClickLogIn"
+            HeightRequest="50"
+            WidthRequest="100"/>
+
+        <StackLayout>
+            <Label Text="¿Aún no tienes cuenta?"
+               VerticalOptions="CenterAndExpand" />
+
+            <Label Text="Haz click aquí"
+               TextColor="Blue"
+               VerticalOptions="CenterAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickRegisterView"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label Text=" para registrarte."
+               VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>
