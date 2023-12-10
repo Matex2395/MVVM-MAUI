@@ -43,6 +43,18 @@ namespace ProductoAppMAUI.Service
             return new Producto();
         }
 
+        public async Task<User> GetUser(User user)
+        {
+            var response = await _httpClient.GetAsync($"/api/Usuario/{user.Correo}/{user.Contrasenia}");
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                User user2 = JsonConvert.DeserializeObject<User>(json_response);
+                return user2;
+            }
+            return null;
+        }
+
         public async Task<List<Producto>> GetProductos()
         {
             var response = await _httpClient.GetAsync("/api/Producto");
@@ -68,6 +80,20 @@ namespace ProductoAppMAUI.Service
                 return producto2;
             }
             return new Producto();
+        }
+
+        public async Task<User> PostUser(User user)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("/api/Usuario", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                User user2 = JsonConvert.DeserializeObject<User>(json_response);
+                return user2;
+            }
+            return new User();
         }
 
         public async Task<Producto> PutProducto(int IdProducto, Producto producto)

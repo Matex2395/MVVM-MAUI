@@ -49,7 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\arroba.png" />
 	  <None Remove="Resources\Images\background.jpg" />
+	  <None Remove="Resources\Images\cart.png" />
 	  <None Remove="Resources\Images\gazelle.png" />
 	  <None Remove="Resources\Images\icon_about.png" />
 	  <None Remove="Resources\Images\icon_about_ios.png" />
@@ -59,6 +61,8 @@
 	  <None Remove="Resources\Images\icon_notes_ios.png" />
 	  <None Remove="Resources\Images\icon_plus_circle.svg" />
 	  <None Remove="Resources\Images\mobile_application.svg" />
+	  <None Remove="Resources\Images\password.png" />
+	  <None Remove="Resources\Images\user.png" />
 	</ItemGroup>
 
 	<ItemGroup>

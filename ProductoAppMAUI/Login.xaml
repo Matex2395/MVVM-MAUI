@@ -2,40 +2,82 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductoAppMAUI.Login"
-             Title="Login">
-    <VerticalStackLayout>
-        <HorizontalStackLayout BackgroundColor="DarkOrange">
-            <Image Source="dotnet_bot.png" HeightRequest="50" WidthRequest="100"/>
-            <Label Text="Iniciar Sesión" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
-        </HorizontalStackLayout>
-        <TableView>
-            <TableRoot>
-                <TableSection Title="Iniciar Sesión">
-                    <EntryCell x:Name="UsernameEntry" Placeholder="Usuario"/>
-                    <EntryCell x:Name="PasswordEntry" Placeholder="Contraseña"/>
-                </TableSection>
-            </TableRoot>
-        </TableView>
+             xmlns:handless="clr-namespace:ProductoAppMAUI.Handlers"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+    <Grid RowDefinitions="1*,8*,1*">
+    <Frame BackgroundColor="#cfd0d8" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               Padding="0" 
+               Margin="0,-80,-80,0"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
 
-        <Button Text="Iniciar Sesión"
-            Clicked="OnClickLogIn"
-            HeightRequest="50"
-            WidthRequest="100"/>
+    </Frame>
 
-        <StackLayout>
-            <Label Text="¿Aún no tienes cuenta?"
-               VerticalOptions="CenterAndExpand" />
+    <Frame BackgroundColor="{x:StaticResource Primary}" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               Padding="0" 
+               Margin="0,-120,-120,0"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
 
-            <Label Text="Haz click aquí"
-               TextColor="Blue"
-               VerticalOptions="CenterAndExpand">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnClickRegisterView"/>
-                </Label.GestureRecognizers>
-            </Label>
+    </Frame>
 
-            <Label Text=" para registrarte."
-               VerticalOptions="CenterAndExpand" />
-        </StackLayout>
-    </VerticalStackLayout>
+    <Frame CornerRadius="0" BorderColor="Transparent" BackgroundColor="{x:StaticResource DashboardBackground}"
+               Grid.Row="1" VerticalOptions="CenterAndExpand"
+               Margin="40,0,40,0"
+               >
+        <VerticalStackLayout Spacing="25">
+            <Label TextColor="Black" Text="INICIE SESIÓN" FontSize="28" FontAttributes="Bold" />
+
+            <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
+                    <Image VerticalOptions="Center" Source="arroba.png" HeightRequest="25" WidthRequest="25" />
+                    <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Correo" Placeholder="Correo Electrónico" Grid.Column="1" />
+                </Grid>
+            </Frame>
+
+            <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
+                    <Image VerticalOptions="Center" Source="password.png" HeightRequest="25" WidthRequest="25" />
+                    <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Contrasenia" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
+                </Grid>
+            </Frame>
+
+                <Button CornerRadius="0" HeightRequest="60" Text="INICIAR SESIÓN" Clicked="OnClickLogIn" FontSize="20" FontAttributes="Bold" />
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Label  FontAttributes="Bold" TextColor="Gray" Text="¿No tiene cuenta?" VerticalTextAlignment="Center" />
+                <Label  Text="Regístrese" FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="{x:StaticResource Primary}" />
+                <HorizontalStackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickRegisterView" />
+                </HorizontalStackLayout.GestureRecognizers>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+    </Frame>
+
+    <Frame BackgroundColor="#cfd0d8" Grid.Row="2" 
+               VerticalOptions="EndAndExpand"
+               HorizontalOptions="StartAndExpand"
+               Padding="0" 
+               Margin="0,0,0,-180"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
+
+    </Frame>
+
+    <Frame BackgroundColor="{x:StaticResource Primary}" 
+               VerticalOptions="EndAndExpand"
+               Grid.Row="2" 
+               HorizontalOptions="StartAndExpand"
+               Padding="0" 
+               Margin="0,0,0,-200"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
+
+    </Frame>
+
+    </Grid>
 </ContentPage>

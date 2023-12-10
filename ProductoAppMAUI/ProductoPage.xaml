@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
              x:Class="ProductoAppMAUI.ProductoPage"
+             BackgroundColor="White"
              Title="ProductoPage">
     <ScrollView>
         <VerticalStackLayout>
-            <HorizontalStackLayout BackgroundColor="DarkBlue">
+            <HorizontalStackLayout BackgroundColor="{x:StaticResource Primary}">
                 <Image Source="vinilo1.png" HeightRequest="50" WidthRequest="100" />
-                <Label Text="Lista Productos" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />
+                <Label x:Name="Correo"
+                       Text="ProductoApp"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"
+                       TextColor="Black"/>
+                <Button Text="Salir"
+                        FontSize="15"
+                        FontAttributes="Bold"
+                        TextColor="{x:StaticResource Primary}"
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        BorderWidth="1"
+                        Margin="10"
+                        Clicked="OnClickLogout"/>
+                <!--<Label Text="Lista Productos" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />-->
             </HorizontalStackLayout>
-            <Button Text="Agregar Producto" Clicked="OnClickAgregarProducto" HorizontalOptions="Center" />
+            <Button Text="Ver Carrito de Compras" 
+                    TextColor="White"
+                    TextTransform="Uppercase"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="10"
+                    BackgroundColor="{x:StaticResource Primary}"
+                    BorderColor="Black"
+                    BorderWidth="1"
+                    Clicked="OnClickAgregarProducto" HorizontalOptions="Center" />
+                <Frame BackgroundColor="{x:StaticResource Tertiary}" CornerRadius="50" HasShadow="False" Padding="10" Margin="15" BorderColor="Transparent">
+                    <Label Text="Vinilos Disponibles" TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>
+                </Frame>
             <ListView x:Name="ListaProductos" ItemsSource="{Binding Productos}" HasUnevenRows="True"  ItemSelected="OnClickShowDetails">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -24,11 +55,17 @@
                                     <!-- Columna para el botón -->
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding Imagen}" HeightRequest="100" WidthRequest="100" Margin="0,0,10,0" />
-                                <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
+                                <StackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
                                     <Label Text="{Binding Nombre}" FontSize="20" TextColor="Black" />
                                     <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="20" TextColor="Black"/>
                                 </StackLayout>
-                                <Button Grid.Column="3" Text="ADD TO CART" Clicked="OnClickBuy" WidthRequest="75" HeightRequest="40" VerticalOptions="Center" />
+                                <Image Grid.Column="3" VerticalOptions="Center" Source="cart.png" 
+                                       WidthRequest="75" HeightRequest="40">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnClickBuy" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                       
                                 <!-- Ancho y alto fijo para el botón, alineado a la derecha -->
                             </Grid>
                         </ViewCell>

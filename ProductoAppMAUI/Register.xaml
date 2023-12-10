@@ -2,11 +2,98 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductoAppMAUI.Register"
-             Title="Register">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:handless="clr-namespace:ProductoAppMAUI.Handlers"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+    <Grid RowDefinitions="1*,8*,1*">
+        <Frame BackgroundColor="#cfd0d8" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               Padding="0" 
+               Margin="0,-80,-80,0"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
+
+        </Frame>
+
+        <Frame BackgroundColor="{x:StaticResource Primary}" Grid.Row="0" HorizontalOptions="EndAndExpand"
+               Padding="0" 
+               Margin="0,-120,-120,0"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
+
+        </Frame>
+
+        <Frame ZIndex="1" CornerRadius="0" BackgroundColor="{x:StaticResource DashboardBackground}"
+               Grid.Row="1" VerticalOptions="CenterAndExpand"
+               BorderColor="Transparent" Margin="40,0,40,0">
+            <ScrollView>
+                <VerticalStackLayout Spacing="25">
+                    <Label Text="REGÍSTRESE" TextColor="Black" FontSize="28" FontAttributes="Bold" />
+
+                    <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                        <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
+                            <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
+                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Nombre" TextColor="Black" PlaceholderColor="Black" Placeholder="Nombre" Grid.Column="1" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                        <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
+                            <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
+                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Apellidos" TextColor="Black" PlaceholderColor="Black" Placeholder="Apellidos" Grid.Column="1" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                        <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
+                            <Image VerticalOptions="Center" Source="arroba.png" HeightRequest="25" WidthRequest="25" />
+                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Correo" TextColor="Black" PlaceholderColor="Black" Placeholder="Correo Electrónico" Grid.Column="1" />
+                        </Grid>
+                    </Frame>
+
+                    <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
+                        <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
+                            <Image VerticalOptions="Center" Source="password.png" HeightRequest="25" WidthRequest="25" />
+                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Contrasenia" TextColor="Black" PlaceholderColor="Black" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
+                        </Grid>
+                    </Frame>
+
+                    <Button CornerRadius="0" HeightRequest="60" Text="REGISTRARSE" 
+                            FontSize="20" FontAttributes="Bold"
+                            Clicked="OnClickRegister"/>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label  FontAttributes="Bold" TextColor="Gray" Text="¿Ya tiene una cuenta?" VerticalTextAlignment="Center" />
+                        <Label  Text="Inicie Sesión" FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="{x:StaticResource Primary}" />
+                        <HorizontalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnClickLogInView" />
+                        </HorizontalStackLayout.GestureRecognizers>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </ScrollView>
+        </Frame>
+
+        <Frame BackgroundColor="#cfd0d8" Grid.Row="2" 
+               VerticalOptions="EndAndExpand"
+               HorizontalOptions="StartAndExpand"
+               Padding="0" 
+               Margin="0,0,0,-180"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
+
+        </Frame>
+
+        <Frame BackgroundColor="{x:StaticResource Primary}" 
+               VerticalOptions="EndAndExpand"
+               Grid.Row="2" 
+               HorizontalOptions="StartAndExpand"
+               Padding="0" 
+               Margin="0,0,0,-200"
+               HeightRequest="250"
+               WidthRequest="250" CornerRadius="125">
+
+        </Frame>
+
+    </Grid>
 </ContentPage>

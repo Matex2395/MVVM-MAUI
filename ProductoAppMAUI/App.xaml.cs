@@ -1,4 +1,6 @@
+using ProductoAppMAUI.Handlers;
 using ProductoAppMAUI.Service;
+using Microsoft.Maui.Graphics;
 
 namespace ProductoAppMAUI
 {
@@ -9,7 +11,19 @@ namespace ProductoAppMAUI
             InitializeComponent();
             APIService aPIService = new APIService();
 
-            MainPage = new NavigationPage(new ProductoPage(aPIService));
+//            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderlessEntry), (handler, view) =>
+//            {
+//                if (view is BorderlessEntry)
+//                {
+//#if __ANDROID__
+//                handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToNative());
+//#elif __IOS__
+//                    handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+//#endif
+//                }
+//            });
+
+            MainPage = new NavigationPage(new Login(aPIService));
             //MainPage = new AppShell();
             
         }

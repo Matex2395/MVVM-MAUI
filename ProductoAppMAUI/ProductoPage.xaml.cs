@@ -13,16 +13,31 @@ public partial class ProductoPage : ContentPage
 	{
 		InitializeComponent();
         _APIService = apiservice;
-		//ListaProductos.ItemsSource = Utils.Utils.ListaProductos;
 	}
+    private async void validarLogin()
+    {
+        if (Preferences.Get("username", "0").Equals("0"))
+        {
+            await Navigation.PushAsync(new Login(_APIService));
+        }
+    }
     protected override async void OnAppearing()
     {
         base.OnAppearing();
+        validarLogin();
+        string username = Preferences.Get("username", "0");
+        Correo.Text = username;
         List<Producto> ListaProducto = await _APIService.GetProductos();
         var productos = new ObservableCollection<Producto>(ListaProducto);
         ListaProductos.ItemsSource = productos;
     }
-    
+
+    private async void OnClickLogout(object sender, EventArgs e)
+    {
+        Preferences.Set("username", "0");
+        await Navigation.PushAsync(new Login(_APIService));
+    }
+
     private async void OnClickAgregarProducto(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new NuevoProductoPage(_APIService));

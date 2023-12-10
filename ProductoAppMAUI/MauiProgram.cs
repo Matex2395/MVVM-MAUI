@@ -10,17 +10,18 @@ namespace ProductoAppMAUI
         {
             var builder = MauiApp.CreateBuilder();
             builder
+                .UseMauiCommunityToolkit()
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                    fonts.AddFont("Poppins-Regular.ttf","Poppins");
-                })
-                .UseMauiCommunityToolkit();
+                    fonts.AddFont("Poppins-Regular.ttf", "Poppins");
+                    fonts.AddFont("FontAwesome5FreeSolid900.otf", "FontAwesomeFreeSolid");
+                });
 
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
