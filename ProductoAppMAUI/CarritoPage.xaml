@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoAppMAUI.CarritoPage"
+             Title="CarritoPage">
+    <VerticalStackLayout>
+        <Label Text="¡Bienvenido a tu Carrito de Compras!" FontAttributes="Bold" FontSize="25" TextColor="Black" Margin="10"/>
+        <ListView x:Name="ListaCarrito" ItemsSource="{Binding Carrito}" HasUnevenRows="True" IsVisible="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <!-- Columna flexible para el espacio restante -->
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Columna para el botón -->
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Imagen}" HeightRequest="100" WidthRequest="100" Margin="0,0,10,0" />
+                            <StackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
+                                <Label Text="{Binding Nombre}" FontSize="20" TextColor="Black" />
+                                <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="20" TextColor="Black"/>
+                                <Label Text="{Binding Stock, StringFormat='${0:F2}'}" FontSize="20" TextColor="Black"/>
+                            </StackLayout>
+                            <Image Grid.Column="3" VerticalOptions="Center" Source="delete.png" 
+                       WidthRequest="75" HeightRequest="40">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TappedDeleteFromCart"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <!-- Ancho y alto fijo para el botón, alineado a la derecha -->
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="NoResenasLabel" Text="No hay reseñas aún" FontSize="16" IsVisible="False" Margin="10"/>
+
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Cantidad de Vinilos: "
+           FontSize="18"
+           TextColor="Black"/>
+            <Label x:Name="Cantidad"
+            Text="Cantidad"
+           FontSize="18"
+           TextColor="Black"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Total a Pagar: "
+            FontSize="18"
+           TextColor="Black"/>
+            <Label x:Name="Descripcion"
+            Text="Descripcion"
+            FontSize="18"
+           TextColor="Black"/>
+        </StackLayout>
+
+        <Button Text="Comprar Productos" 
+                TextColor="White"
+                TextTransform="Uppercase"
+                FontSize="20"
+                FontAttributes="Bold"
+                Margin="10"
+                BackgroundColor="{x:StaticResource Primary}"
+                BorderColor="Black"
+                BorderWidth="1"
+                Clicked="OnClickComprar" 
+                HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

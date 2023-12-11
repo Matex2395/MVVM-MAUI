@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductoAppMAUI.DetalleProductoPage"
+             BackgroundColor="White"
              Title="DetalleProductoPage">
     <VerticalStackLayout>
         <Image Source="{Binding Imagen}"
@@ -9,37 +10,60 @@
                HeightRequest="200"/>
         <Label x:Name="Nombre"
                Text="Nombre"
+               TextColor="Black"
                FontSize="32"
                HorizontalOptions="Center"/>
         <StackLayout Orientation="Horizontal">
             <Label Text="Cantidad: "
-                    FontSize="18"/>
+                   FontSize="18"
+                   TextColor="Black"/>
             <Label x:Name="Cantidad"
-                    Text="Cantidad"
-                    FontSize="18"/>
+                   Text="Cantidad"
+                   FontSize="18"
+                   TextColor="Black"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Label Text="Decripción: "
-                    FontSize="18"/>
+            <Label Text="Descripción: "
+                    FontSize="18"
+                   TextColor="Black"/>
             <Label x:Name="Descripcion"
                     Text="Descripcion"
-                    FontSize="18"/>
+                    FontSize="18"
+                   TextColor="Black"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Button Text="Borrar"
-                Clicked="OnClickBorrar"
-                FontSize="20"
-                Margin="5"
-                HorizontalOptions="FillAndExpand"
-                BackgroundColor="Red"/>
-            <Button Text="Editar"
-                Clicked="OnClickEditar"
+            <Button Text="Dejar Reseña"
+                Clicked="OnClickResena"
                 FontSize="20"
                 Margin="5"
                 HorizontalOptions="FillAndExpand"
                 TextColor="Black"
-                BackgroundColor="Orange"/>
+                BackgroundColor="#faa65b"/>
         </StackLayout>
+        <!-- Sección de Reseñas -->
+        <Label Text="Reseñas" FontAttributes="Bold" FontSize="25" TextColor="Black" Margin="10"/>
+        <ListView x:Name="ListaResenas" ItemsSource="{Binding Resena}" HasUnevenRows="True" IsVisible="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <!-- Columna para el botón -->
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
+                                <Label Text="{Binding Usuario}" FontSize="17" TextColor="Black"/>
+                                <Label Text="{Binding Texto}" FontSize="Default" TextColor="Black" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="NoResenasLabel" Text="No hay reseñas aún" FontSize="16" IsVisible="False" Margin="10"/>
+
+
 
     </VerticalStackLayout>
 </ContentPage>

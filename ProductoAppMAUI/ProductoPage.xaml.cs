@@ -26,7 +26,7 @@ public partial class ProductoPage : ContentPage
         base.OnAppearing();
         validarLogin();
         string username = Preferences.Get("username", "0");
-        Correo.Text = username;
+        User.Text = username;
         List<Producto> ListaProducto = await _APIService.GetProductos();
         var productos = new ObservableCollection<Producto>(ListaProducto);
         ListaProductos.ItemsSource = productos;
@@ -38,18 +38,14 @@ public partial class ProductoPage : ContentPage
         await Navigation.PushAsync(new Login(_APIService));
     }
 
-    private async void OnClickAgregarProducto(object sender, EventArgs e)
+    private async void OnClickVerCarrito(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new NuevoProductoPage(_APIService));
+        await Navigation.PushAsync(new CarritoPage(_APIService));
     }
-    private async void OnClickAgregar(object sender, EventArgs E)
-	{
-        var toast = Toast.Make("Producto agregado", ToastDuration.Short, 14);
-        await toast.Show();
-    }
-    private async void OnClickBuy(object sender, EventArgs E)
+
+    private async void OnClickAddCart(object sender, EventArgs E)
     {
-        var toast = Toast.Make("Producto comprado", ToastDuration.Short, 14);
+        var toast = Toast.Make("Producto Agregado a tu Carrito", ToastDuration.Short, 14);
         await toast.Show();
     }
 

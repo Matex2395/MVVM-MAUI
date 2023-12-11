@@ -34,7 +34,7 @@ public partial class Login : ContentPage
         User user2 = await _APIService.GetUser(user);
         if (user2 != null)
         {
-            Preferences.Set("username", user2.Correo);
+            Preferences.Set("username", user2.Nombre);
             Preferences.Set("IdUser", user2.IdUsuario);
             await Navigation.PushAsync(new ProductoPage(_APIService));
         }

@@ -11,9 +11,9 @@
         <VerticalStackLayout>
             <HorizontalStackLayout BackgroundColor="{x:StaticResource Primary}">
                 <Image Source="vinilo1.png" HeightRequest="50" WidthRequest="100" />
-                <Label x:Name="Correo"
+                <Label x:Name="User"
                        Text="ProductoApp"
-                       FontSize="15"
+                       FontSize="20"
                        FontAttributes="Bold"
                        VerticalTextAlignment="Center"
                        TextColor="Black"/>
@@ -37,7 +37,8 @@
                     BackgroundColor="{x:StaticResource Primary}"
                     BorderColor="Black"
                     BorderWidth="1"
-                    Clicked="OnClickAgregarProducto" HorizontalOptions="Center" />
+                    Clicked="OnClickVerCarrito" 
+                    HorizontalOptions="Center" />
                 <Frame BackgroundColor="{x:StaticResource Tertiary}" CornerRadius="50" HasShadow="False" Padding="10" Margin="15" BorderColor="Transparent">
                     <Label Text="Vinilos Disponibles" TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>
                 </Frame>
@@ -62,7 +63,7 @@
                                 <Image Grid.Column="3" VerticalOptions="Center" Source="cart.png" 
                                        WidthRequest="75" HeightRequest="40">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnClickBuy" />
+                                        <TapGestureRecognizer Tapped="OnClickAddCart" />
                                     </Image.GestureRecognizers>
                                 </Image>
                                        

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoAppMAUI.NuevaResenaPage"
+             BackgroundColor="White"
+             Title="NuevaResenaPage">
+    <VerticalStackLayout>
+        <HorizontalStackLayout BackgroundColor="{x:StaticResource Primary}">
+            <Image Source="Vinilo1.png" HeightRequest="50" WidthRequest="100"/>
+            <Label Text="Dejar una Reseña" FontSize="30" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
+        <StackLayout Margin="10">
+                <Label Text="ID del Vinilo:" FontSize="18" TextColor="Black" FontAttributes="Bold"/>
+                <Entry x:Name="IdViniloEntry" IsReadOnly="True" FontSize="18" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Margin="10">
+                <Label Text="Usuario:" FontSize="18" TextColor="Black" FontAttributes="Bold"/>
+                <Entry x:Name="UsuarioEntry" IsReadOnly="True" FontSize="18" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Margin="10">
+                <Label Text="Comentario:" FontAttributes="Bold" FontSize="18" TextColor="Black"/>
+                <Entry x:Name="TextoEntry" Placeholder="Deja tu comentario" FontSize="18" TextColor="Black"/>
+            </StackLayout>
+
+            <Button Text="Enviar"
+                    TextTransform="Uppercase"
+                    Clicked="OnClickEnviarResena"
+                    HeightRequest="50"
+                    WidthRequest="100"
+                    BorderColor="Black"
+                    BorderWidth="1"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    BackgroundColor="{x:StaticResource Primary}"/>
+    </VerticalStackLayout>
+</ContentPage>
