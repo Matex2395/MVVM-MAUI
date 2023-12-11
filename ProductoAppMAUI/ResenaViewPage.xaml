@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoAppMAUI.ResenaViewPage"
+             BackgroundColor="White"
+             Title="ResenaViewPage">
+    <ScrollView>
+    <VerticalStackLayout>
+            <Label Text="Reseñas" FontAttributes="Bold" FontSize="25" TextColor="Black" Margin="10"/>
+            <ListView x:Name="ListaResenas" ItemsSource="{Binding Resenas}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <!-- Columna para el botón -->
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding Usuario}" FontSize="17" TextColor="Black"/>
+                                    <Label Text="{Binding Texto}" FontSize="Default" TextColor="Black" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label x:Name="NoResenasLabel" Text="No hay reseñas aún" FontSize="16" Margin="10"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

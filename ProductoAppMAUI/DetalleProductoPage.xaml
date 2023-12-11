@@ -39,31 +39,14 @@
                 HorizontalOptions="FillAndExpand"
                 TextColor="Black"
                 BackgroundColor="#faa65b"/>
+            <Button Text="Ver Reseñas"
+                    Clicked="OnClickResenaView"
+                    FontSize="20"
+                    Margin="5"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="Black"
+                    BackgroundColor="#cae42c"/>
         </StackLayout>
-        <!-- Sección de Reseñas -->
-        <Label Text="Reseñas" FontAttributes="Bold" FontSize="25" TextColor="Black" Margin="10"/>
-        <ListView x:Name="ListaResenas" ItemsSource="{Binding Resena}" HasUnevenRows="True" IsVisible="False">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <!-- Columna para el botón -->
-                            </Grid.ColumnDefinitions>
-                            <StackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
-                                <Label Text="{Binding Usuario}" FontSize="17" TextColor="Black"/>
-                                <Label Text="{Binding Texto}" FontSize="Default" TextColor="Black" />
-                            </StackLayout>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Label x:Name="NoResenasLabel" Text="No hay reseñas aún" FontSize="16" IsVisible="False" Margin="10"/>
-
-
 
     </VerticalStackLayout>
 </ContentPage>

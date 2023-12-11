@@ -68,9 +68,9 @@ namespace ProductoAppMAUI.Service
 
         }
 
-        public async Task<List<Resena>> GetResenas(Producto producto)
+        public async Task<List<Resena>> GetResenas(string IdProducto)
         {
-            var response = await _httpClient.GetAsync($"/Resena/{producto.IdProducto}");
+            var response = await _httpClient.GetAsync($"/Resena/{IdProducto}");
             if (response.IsSuccessStatusCode)
             {
                 var json_response = await response.Content.ReadAsStringAsync();

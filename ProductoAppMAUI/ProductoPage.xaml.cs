@@ -55,6 +55,7 @@ public partial class ProductoPage : ContentPage
 
         await toast.Show();
         Producto producto = e.SelectedItem as Producto;
+        Preferences.Default.Set("ProductId", producto.IdProducto.ToString());
         await Navigation.PushAsync(new DetalleProductoPage(_APIService)
         {
             BindingContext = producto,
