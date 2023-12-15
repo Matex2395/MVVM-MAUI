@@ -7,8 +7,8 @@
     <ScrollView>
     <VerticalStackLayout>
             <Label Text="Reseñas" FontAttributes="Bold" FontSize="25" TextColor="Black" Margin="10"/>
-            <Label Text="Aquí se mostrarán las reseñas, en caso de que haya." FontSize="16" Margin="10"/>
-            <Label Text="Si no encuentras reseñas, anímate a dejar una ;)" FontSize="16" Margin="10"/>
+            <Label Text="Aquí se mostrarán las reseñas, en caso de que haya." FontSize="16" Margin="5" TextColor="Black"/>
+            <Label Text="Si no encuentras reseñas, anímate a dejar una ;)" FontSize="16" Margin="5" TextColor="Black"/>
             <ListView x:Name="ListaResenas" ItemsSource="{Binding Resenas}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>

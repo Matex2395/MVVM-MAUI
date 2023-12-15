@@ -60,12 +60,12 @@
                                     <Label Text="{Binding Nombre}" FontSize="20" TextColor="Black" />
                                     <Label Text="{Binding Precio, StringFormat='${0:F2}'}" FontSize="20" TextColor="Black"/>
                                 </StackLayout>
-                                <Image Grid.Column="3" VerticalOptions="Center" Source="cart.png" 
+                                <!--<Image Grid.Column="3" VerticalOptions="Center" Source="cart.png" 
                                        WidthRequest="75" HeightRequest="40">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="OnClickAddCart" />
                                     </Image.GestureRecognizers>
-                                </Image>
+                                </Image>-->
                                        
                                 <!-- Ancho y alto fijo para el botón, alineado a la derecha -->
                             </Grid>

@@ -47,6 +47,15 @@
                     TextColor="Black"
                     BackgroundColor="#cae42c"/>
         </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Agregar al Carrito"
+            Clicked="OnClickAddCart"
+            FontSize="20"
+            Margin="5"
+            HorizontalOptions="FillAndExpand"
+            TextColor="Black"
+            BackgroundColor="BlueViolet"/>
+        </StackLayout>
 
     </VerticalStackLayout>
 </ContentPage>

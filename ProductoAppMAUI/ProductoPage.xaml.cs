@@ -43,12 +43,6 @@ public partial class ProductoPage : ContentPage
         await Navigation.PushAsync(new CarritoPage(_APIService));
     }
 
-    private async void OnClickAddCart(object sender, EventArgs E)
-    {
-        var toast = Toast.Make("Producto Agregado a tu Carrito", ToastDuration.Short, 14);
-        await toast.Show();
-    }
-
     private async void OnClickShowDetails(object sender, SelectedItemChangedEventArgs e)
     {
         var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en ver producto", ToastDuration.Short, 14);

@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http.Json;
 
 namespace ProductoAppMAUI.Service
 {
@@ -81,6 +82,46 @@ namespace ProductoAppMAUI.Service
 
         }
 
+        public async Task<List<Carrito>> GetProductosCarrito(string IdUsuario)
+        {
+            var response = await _httpClient.GetAsync($"/api/ProductoEnCarrito/ObtenerProductosEnCarrito/IdUsuario/{IdUsuario}");
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                List<Carrito> carrito = JsonConvert.DeserializeObject<List<Carrito>>(json_response);
+                return carrito;
+            }
+            return null;
+
+        }
+
+        public async Task<bool> DeleteCarrito(string IdUsuario)
+        {
+            var response = await _httpClient.DeleteAsync($"api/ProductoEnCarrito/EliminarProductosEnCarritoPorUsuario/{IdUsuario}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+
+            return false;
+
+        }
+
+        public async Task<bool> DeleteProductoCarrito(string IdProductoEnCarrito)
+        {
+            var response = await _httpClient.DeleteAsync($"api/ProductoEnCarrito/EliminarProductoEnCarrito/{IdProductoEnCarrito}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return true;
+            }
+
+            return false;
+        }
+
         public async Task<Producto> PostProducto(Producto producto)
         {
             var content = new StringContent(JsonConvert.SerializeObject(producto), Encoding.UTF8, "application/json");
@@ -107,6 +148,19 @@ namespace ProductoAppMAUI.Service
                 return resena2;
             }
             return new Resena();
+        }
+
+        public async Task<Carrito> PostProductoEnCarrito(string IdUsuario, string IdProducto)
+        {
+            var response = await _httpClient.PostAsync($"/api/ProductoEnCarrito/AgregarAlCarrito/{IdUsuario}/{IdProducto}", null);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json_response = await response.Content.ReadAsStringAsync();
+                Carrito carrito2 = JsonConvert.DeserializeObject<Carrito>(json_response);
+                return carrito2;
+            }
+            return new Carrito();
         }
 
         public async Task<User> PostUser(User user)
