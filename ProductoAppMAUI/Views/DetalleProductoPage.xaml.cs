@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ProductoAppMAUI.Models;
 using ProductoAppMAUI.Service;
+using ProductoAppMAUI.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace ProductoAppMAUI;
@@ -21,22 +22,22 @@ public partial class DetalleProductoPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _producto = BindingContext as Producto;
-        Nombre.Text = _producto.Nombre;
-        Cantidad.Text = _producto.Stock.ToString();
-        Descripcion.Text = _producto.Descripcion;
+        //_producto = BindingContext as Producto;
+        //Nombre.Text = _producto.Nombre;
+        //Cantidad.Text = _producto.Stock.ToString();
+        //Descripcion.Text = _producto.Descripcion;
     }
 
-    private async void OnClickResena(object sender, EventArgs e)
-    {
-        var toast = CommunityToolkit.Maui.Alerts.Toast.Make(_producto.Nombre, ToastDuration.Short, 14);
+    //private async void OnClickResena(object sender, EventArgs e)
+    //{
+    //    var toast = CommunityToolkit.Maui.Alerts.Toast.Make(_producto.Nombre, ToastDuration.Short, 14);
 
-        await toast.Show();
-        await Navigation.PushAsync(new NuevaResenaPage(_APIService)
-        {
-            BindingContext = _producto,
-        });
-    }
+    //    await toast.Show();
+    //    await Navigation.PushAsync(new NuevaResenaPage(_APIService)
+    //    {
+    //        BindingContext = _producto,
+    //    });
+    //}
 
     private async void OnClickResenaView(object sender, EventArgs e)
     {

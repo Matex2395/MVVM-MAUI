@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProductoAppMAUI.Models
 {
+    [AddINotifyPropertyChangedInterface]
     public class Producto
     {
         public int IdProducto { get; set; }

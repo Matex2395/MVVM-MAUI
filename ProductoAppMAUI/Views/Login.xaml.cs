@@ -6,8 +6,7 @@ namespace ProductoAppMAUI;
 public partial class Login : ContentPage
 {
     private readonly APIService _APIService;
-
-    public Login(APIService apiservice)
+        public Login(APIService apiservice)
     {
         InitializeComponent();
         _APIService = apiservice;
@@ -36,7 +35,7 @@ public partial class Login : ContentPage
         {
             Preferences.Set("username", user2.Nombre);
             Preferences.Set("IdUser", user2.IdUsuario.ToString());
-            await Navigation.PushAsync(new ProductoPage(_APIService));
+            await App.Current.MainPage.Navigation.PushAsync(new ProductoPage(_APIService));
         }
         else 
         {

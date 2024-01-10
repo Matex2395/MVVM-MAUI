@@ -7,14 +7,14 @@ public partial class Register : ContentPage
 {
     private readonly APIService _APIService;
     public Register(APIService apiservice)
-	{
+    {
         InitializeComponent();
         _APIService = apiservice;
     }
 
     private async void OnClickLogInView(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
+        await App.Current.MainPage.Navigation.PopAsync();
     }
 
     private async void OnClickRegister(object sender, EventArgs e)
@@ -38,6 +38,6 @@ public partial class Register : ContentPage
 
         await _APIService.PostUser(usuario);
         await DisplayAlert("Usuario Agregado", "El registro fue exitoso.", "OK");
-        await Navigation.PopAsync();
+        await App.Current.MainPage.Navigation.PopAsync();
     }
 }

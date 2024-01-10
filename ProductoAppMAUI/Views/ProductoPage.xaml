@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:viewmodel="clr-namespace:ProductoAppMAUI.ViewModels"
              x:Class="ProductoAppMAUI.ProductoPage"
              BackgroundColor="White"
              Title="ProductoPage">
@@ -25,7 +26,7 @@
                         BorderColor="Black"
                         BorderWidth="1"
                         Margin="10"
-                        Clicked="OnClickLogout"/>
+                        Command="{Binding Logout}"/>
                 <!--<Label Text="Lista Productos" FontSize="30" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />-->
             </HorizontalStackLayout>
             <Button Text="Ver Carrito de Compras" 
@@ -42,7 +43,7 @@
                 <Frame BackgroundColor="{x:StaticResource Tertiary}" CornerRadius="50" HasShadow="False" Padding="10" Margin="15" BorderColor="Transparent">
                     <Label Text="Vinilos Disponibles" TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>
                 </Frame>
-            <ListView x:Name="ListaProductos" ItemsSource="{Binding Productos}" HasUnevenRows="True"  ItemSelected="OnClickShowDetails">
+            <ListView x:Name="ListaProductos" ItemsSource="{Binding ListaProductos}" HasUnevenRows="True"  ItemSelected="OnClickShowDetails">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -5,11 +5,11 @@
              BackgroundColor="White"
              Title="DetalleProductoPage">
     <VerticalStackLayout>
-        <Image Source="{Binding Imagen}"
+        <Image Source="{Binding Producto.Imagen}"
                HorizontalOptions="Center"
                HeightRequest="200"/>
         <Label x:Name="Nombre"
-               Text="Nombre"
+               Text="{Binding Producto.Nombre}"
                TextColor="Black"
                FontSize="32"
                HorizontalOptions="Center"/>
@@ -18,7 +18,7 @@
                    FontSize="18"
                    TextColor="Black"/>
             <Label x:Name="Cantidad"
-                   Text="Cantidad"
+                   Text="{Binding Producto.Cantidad}"
                    FontSize="18"
                    TextColor="Black"/>
         </StackLayout>
@@ -27,20 +27,20 @@
                     FontSize="18"
                    TextColor="Black"/>
             <Label x:Name="Descripcion"
-                    Text="Descripcion"
+                    Text="{Binding Producto.Descripcion}"
                     FontSize="18"
                    TextColor="Black"/>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Button Text="Dejar Reseña"
-                Clicked="OnClickResena"
+                Command="{Binding DejarResena}"
                 FontSize="20"
                 Margin="5"
                 HorizontalOptions="FillAndExpand"
                 TextColor="Black"
                 BackgroundColor="#faa65b"/>
             <Button Text="Ver Reseñas"
-                    Clicked="OnClickResenaView"
+                    Command="{Binding VerResenas}"
                     FontSize="20"
                     Margin="5"
                     HorizontalOptions="FillAndExpand"
@@ -49,7 +49,7 @@
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Button Text="Agregar al Carrito"
-            Clicked="OnClickAddCart"
+            Command="{Binding AddCart}"
             FontSize="20"
             Margin="5"
             HorizontalOptions="FillAndExpand"

@@ -6,8 +6,8 @@ public partial class HomePage : ContentPage
 {
     private readonly APIService _APIService;
     public HomePage(APIService apiservice)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _APIService = apiservice;
     }
 

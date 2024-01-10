@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using ProductoAppMAUI.Models;
 using ProductoAppMAUI.Service;
+using ProductoAppMAUI.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace ProductoAppMAUI;
@@ -9,39 +10,23 @@ namespace ProductoAppMAUI;
 public partial class ProductoPage : ContentPage
 {
     private readonly APIService _APIService;
-	public ProductoPage(APIService apiservice)
-	{
-		InitializeComponent();
-        _APIService = apiservice;
-	}
-    private async void validarLogin()
+    public ProductoPage(APIService apiservice)
     {
-        if (Preferences.Get("username", "0").Equals("0"))
-        {
-            await Navigation.PushAsync(new Login(_APIService));
-        }
+        InitializeComponent();
+        _APIService = apiservice;
+        BindingContext = new ProductoViewModel(_APIService);
     }
+
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        validarLogin();
         string username = Preferences.Get("username", "0");
         User.Text = username;
-        List<Producto> ListaProducto = await _APIService.GetProductos();
-        var productos = new ObservableCollection<Producto>(ListaProducto);
-        ListaProductos.ItemsSource = productos;
+        //List<Producto> ListaProducto = await _APIService.GetProductos();
+        //var productos = new ObservableCollection<Producto>(ListaProducto);
+        //ListaProductos.ItemsSource = productos;
     }
 
-    private async void OnClickLogout(object sender, EventArgs e)
-    {
-        Preferences.Set("username", "0");
-        await Navigation.PushAsync(new HomePage(_APIService));
-    }
-
-    private async void OnClickVerCarrito(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new CarritoPage(_APIService));
-    }
 
     private async void OnClickShowDetails(object sender, SelectedItemChangedEventArgs e)
     {
@@ -52,7 +37,7 @@ public partial class ProductoPage : ContentPage
         Preferences.Default.Set("ProductId", producto.IdProducto.ToString());
         await Navigation.PushAsync(new DetalleProductoPage(_APIService)
         {
-            BindingContext = producto,
+            BindingContext = new DetalleProductoViewModel(producto),
         });
     }
 }   

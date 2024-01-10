@@ -43,7 +43,7 @@
                 </Grid>
             </Frame>
 
-                <Button CornerRadius="0" HeightRequest="60" Text="INICIAR SESIÓN" Clicked="OnClickLogIn" FontSize="20" FontAttributes="Bold" />
+                <Button CornerRadius="0" HeightRequest="60" Text="INICIAR SESIÓN" Command="{Binding Login}" FontSize="20" FontAttributes="Bold" />
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                 <Label  FontAttributes="Bold" TextColor="Gray" Text="¿No tiene cuenta?" VerticalTextAlignment="Center" />

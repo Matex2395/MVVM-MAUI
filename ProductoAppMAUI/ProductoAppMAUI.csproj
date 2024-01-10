@@ -76,43 +76,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="DetalleProductoPage.xaml.cs">
+	  <Compile Update="Views\DetalleProductoPage.xaml.cs">
 	    <DependentUpon>DetalleProductoPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="EditarProductoPage.xaml.cs">
-	    <DependentUpon>EditarProductoPage.xaml</DependentUpon>
+	  <Compile Update="Views\Login.xaml.cs">
+	    <DependentUpon>Login.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="CarritoPage.xaml">
+	  <MauiXaml Update="Views\CarritoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="DetalleProductoPage.xaml">
+	  <MauiXaml Update="Views\DetalleProductoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="HomePage.xaml">
+	  <MauiXaml Update="Views\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="EditarProductoPage.xaml">
+	  <MauiXaml Update="Views\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Login.xaml">
+	  <MauiXaml Update="Views\NuevaResenaPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="NuevaResenaPage.xaml">
+	  <MauiXaml Update="Views\ProductoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="NuevoProductoPage.xaml">
+	  <MauiXaml Update="Views\Register.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="ProductoPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Register.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="ResenaViewPage.xaml">
+	  <MauiXaml Update="Views\ResenaViewPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
