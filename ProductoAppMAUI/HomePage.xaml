@@ -11,19 +11,19 @@
 
             <Image
                 Source="mobile_application.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                SemanticProperties.Description="Bienvenido a Gliss Vinyls!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="BIENVENID@S!"
+                Text="¡Adquiere tu música favorita!"
                 TextColor="Black"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Esta es mi app CRUD"
+                Text="Compra Vinilos"
                 TextColor="Black"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I"
@@ -31,10 +31,8 @@
                 HorizontalOptions="Center" />
 
             <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Text="Entrar"
+                Clicked="EntrarClicked"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>

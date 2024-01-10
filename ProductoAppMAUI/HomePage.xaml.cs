@@ -1,22 +1,36 @@
+using ProductoAppMAUI.Service;
+
 namespace ProductoAppMAUI;
 
 public partial class HomePage : ContentPage
 {
-    int count = 0;
-    public HomePage()
+    private readonly APIService _APIService;
+    public HomePage(APIService apiservice)
 	{
 		InitializeComponent();
-	}
+        _APIService = apiservice;
+    }
 
-    private void OnCounterClicked(object sender, EventArgs e)
+    private async void ValidarLogin()
     {
-        count++;
+        if ((Preferences.Get("username", "0").Equals("0")))
+        {
+            await DisplayAlert("¡Bienvenido!", "Bienvenido a Gliss Vinyls, Inicia Sesión en tu cuenta para continuar", "OK");
+        } else
+        {
+            await Navigation.PushAsync(new ProductoPage(_APIService));
+        }
+    }
 
-        if (count == 1)
-            CounterBtn.Text = $"Clicked {count} time";
-        else
-            CounterBtn.Text = $"Clicked {count} times";
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        ValidarLogin();
+        string username = Preferences.Get("username", "0");
+    }
 
-        SemanticScreenReader.Announce(CounterBtn.Text);
+    private async void EntrarClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Login(_APIService));
     }
 }

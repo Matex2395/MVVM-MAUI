@@ -23,7 +23,8 @@ namespace ProductoAppMAUI
 //                }
 //            });
 
-            MainPage = new NavigationPage(new Login(aPIService));
+            MainPage = new NavigationPage(new HomePage(aPIService));
+            Preferences.Set("username", "0");
             //MainPage = new AppShell();
             
         }

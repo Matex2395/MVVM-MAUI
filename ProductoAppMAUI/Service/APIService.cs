@@ -17,7 +17,7 @@ namespace ProductoAppMAUI.Service
         public HttpClient _httpClient;
         public APIService()
         {
-            _baseUrl = "https://apiproductos20231211072423.azurewebsites.net";
+            _baseUrl = "http://localhost:5240";
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(_baseUrl);
         }

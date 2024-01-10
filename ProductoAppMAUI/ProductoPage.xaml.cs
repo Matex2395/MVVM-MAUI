@@ -35,7 +35,7 @@ public partial class ProductoPage : ContentPage
     private async void OnClickLogout(object sender, EventArgs e)
     {
         Preferences.Set("username", "0");
-        await Navigation.PushAsync(new Login(_APIService));
+        await Navigation.PushAsync(new HomePage(_APIService));
     }
 
     private async void OnClickVerCarrito(object sender, EventArgs e)
