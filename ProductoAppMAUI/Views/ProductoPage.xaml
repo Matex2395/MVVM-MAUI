@@ -43,7 +43,7 @@
                 <Frame BackgroundColor="{x:StaticResource Tertiary}" CornerRadius="50" HasShadow="False" Padding="10" Margin="15" BorderColor="Transparent">
                     <Label Text="Vinilos Disponibles" TextColor="Black" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>
                 </Frame>
-            <ListView x:Name="ListaProductos" ItemsSource="{Binding ListaProductos}" HasUnevenRows="True"  ItemSelected="OnClickShowDetails">
+            <ListView x:Name="listaProductos" ItemsSource="{Binding ListaProductos}" HasUnevenRows="True"  ItemSelected="OnClickShowDetails">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

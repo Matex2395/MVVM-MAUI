@@ -44,9 +44,9 @@ namespace ProductoAppMAUI.Service
             return new Producto();
         }
 
-        public async Task<User> GetUser(User user)
+        public async Task<User> GetUser(String Correo, String Contrasenia)
         {
-            var response = await _httpClient.GetAsync($"/api/Usuario/{user.Correo}/{user.Contrasenia}");
+            var response = await _httpClient.GetAsync($"/api/Usuario/{Correo}/{Contrasenia}");
             if (response.IsSuccessStatusCode)
             {
                 var json_response = await response.Content.ReadAsStringAsync();

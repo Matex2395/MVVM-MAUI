@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Core;
 using ProductoAppMAUI.Models;
 using ProductoAppMAUI.Service;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace ProductoAppMAUI;
 
@@ -23,21 +24,27 @@ public partial class CarritoPage : ContentPage
         ListaCarritos.ItemsSource = carrito;
     }
 
+    public ICommand Comprar =>
+            new Command(async () =>
+            {
+                string IdUsuario = Preferences.Get("IdUser", "0");
+                List<Carrito> carrito = await _APIService.GetProductosCarrito(IdUsuario);
+                if (carrito.Count == 0)
+                {
+                    await DisplayAlert("Error", "No tiene productos agregados al carrito.", "OK");
+                    return;
+                }
+                else
+                {
+                    await _APIService.DeleteCarrito(IdUsuario);
+                    await DisplayAlert("Felicidades", "Su compra ha sido realizada", "OK");
+                    await Navigation.PopAsync();
+                }
+            });
+
     private async void OnClickComprar(object sender, EventArgs e)
     {
-        string IdUsuario = Preferences.Get("IdUser", "0");
-        List<Carrito> carrito = await _APIService.GetProductosCarrito(IdUsuario);
-        if (carrito.Count==0)
-        {
-            await DisplayAlert("Error", "No tiene productos agregados al carrito.", "OK");
-            return;
-        }
-        else 
-        {
-            await _APIService.DeleteCarrito(IdUsuario);
-            await DisplayAlert("Felicidades", "Su compra ha sido realizada", "OK");
-            await Navigation.PopAsync();
-        }
+        
     }
 
     private async void TappedDeleteFromCart(object sender, TappedEventArgs e)

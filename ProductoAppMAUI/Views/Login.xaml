@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProductoAppMAUI.ViewModels"
              x:Class="ProductoAppMAUI.Login"
              xmlns:handless="clr-namespace:ProductoAppMAUI.Handlers"
              Shell.NavBarIsVisible="False"
              BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <viewModels:LoginViewModel/>
+    </ContentPage.BindingContext>
     <Grid RowDefinitions="1*,8*,1*">
     <Frame BackgroundColor="#cfd0d8" Grid.Row="0" HorizontalOptions="EndAndExpand"
                Padding="0" 
@@ -32,18 +36,20 @@
             <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
                 <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                     <Image VerticalOptions="Center" Source="arroba.png" HeightRequest="25" WidthRequest="25" />
-                    <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Correo" Placeholder="Correo Electrónico" Grid.Column="1" />
+                    <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Correo" 
+                                              Text="{Binding Correo}"  Placeholder="Correo Electrónico" Grid.Column="1" />
                 </Grid>
             </Frame>
 
             <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
                 <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                     <Image VerticalOptions="Center" Source="password.png" HeightRequest="25" WidthRequest="25" />
-                    <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Contrasenia" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
+                    <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Contrasenia" 
+                                              Text="{Binding Password}" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
                 </Grid>
             </Frame>
 
-                <Button CornerRadius="0" HeightRequest="60" Text="INICIAR SESIÓN" Command="{Binding Login}" FontSize="20" FontAttributes="Bold" />
+                <Button CornerRadius="0" HeightRequest="60" Text="INICIAR SESIÓN" Command="{Binding LoginButton}" FontSize="20" FontAttributes="Bold" />
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
                 <Label  FontAttributes="Bold" TextColor="Gray" Text="¿No tiene cuenta?" VerticalTextAlignment="Center" />
@@ -51,7 +57,7 @@
                            FontAttributes="Bold"
                            TextColor="{x:StaticResource Primary}" />
                 <HorizontalStackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnClickRegisterView" />
+                    <TapGestureRecognizer Command="{Binding RegisterButton}" />
                 </HorizontalStackLayout.GestureRecognizers>
             </HorizontalStackLayout>
         </VerticalStackLayout>

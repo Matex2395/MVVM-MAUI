@@ -18,7 +18,7 @@ public partial class HomePage : ContentPage
             await DisplayAlert("¡Bienvenido!", "Bienvenido a Gliss Vinyls, Inicia Sesión en tu cuenta para continuar", "OK");
         } else
         {
-            await Navigation.PushAsync(new ProductoPage(_APIService));
+            await App.Current.MainPage.Navigation.PushAsync(new ProductoPage(_APIService));
         }
     }
 
@@ -27,10 +27,5 @@ public partial class HomePage : ContentPage
         base.OnAppearing();
         ValidarLogin();
         string username = Preferences.Get("username", "0");
-    }
-
-    private async void EntrarClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new Login(_APIService));
     }
 }
