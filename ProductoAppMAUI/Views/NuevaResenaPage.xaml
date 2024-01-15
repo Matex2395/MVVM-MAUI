@@ -11,15 +11,15 @@
         </HorizontalStackLayout>
         <StackLayout Margin="10">
                 <Label Text="ID del Vinilo:" FontSize="18" TextColor="Black" FontAttributes="Bold"/>
-                <Entry x:Name="IdViniloEntry" IsReadOnly="True" FontSize="18" TextColor="Black"/>
+                <Entry x:Name="IdViniloEntry" Text="{Binding IdViniloText}"  IsReadOnly="True" FontSize="18" TextColor="Black"/>
             </StackLayout>
             <StackLayout Margin="10">
                 <Label Text="Usuario:" FontSize="18" TextColor="Black" FontAttributes="Bold"/>
-                <Entry x:Name="UsuarioEntry" Text="{Binding Resena.Usuario}" IsReadOnly="True" FontSize="18" TextColor="Black"/>
+                <Entry x:Name="UsuarioEntry" Text="{Binding UsernameText}" IsReadOnly="True" FontSize="18" TextColor="Black"/>
             </StackLayout>
             <StackLayout Margin="10">
                 <Label Text="Comentario:" FontAttributes="Bold" FontSize="18" TextColor="Black"/>
-            <Entry x:Name="TextoEntry" Text="{Binding Resena.Texto}" Placeholder="Deja tu comentario" FontSize="18" TextColor="Black"/>
+            <Entry x:Name="TextoEntry" Text="{Binding ComentarioText}" Placeholder="Deja tu comentario" FontSize="18" TextColor="Black"/>
             </StackLayout>
 
             <Button Text="Enviar"

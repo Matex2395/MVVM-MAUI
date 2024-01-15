@@ -41,7 +41,7 @@ namespace ProductoAppMAUI.Service
                 Producto producto = JsonConvert.DeserializeObject<Producto>(json_response);
                 return producto;
             }
-            return new Producto();
+            return null;
         }
 
         public async Task<User> GetUser(String Correo, String Contrasenia)
@@ -65,7 +65,7 @@ namespace ProductoAppMAUI.Service
                 List<Producto> productos = JsonConvert.DeserializeObject<List<Producto>>(json_response);
                 return productos;
             }
-            return new List<Producto>();
+            return null;
 
         }
 
@@ -133,7 +133,7 @@ namespace ProductoAppMAUI.Service
                 Producto producto2 = JsonConvert.DeserializeObject<Producto>(json_response);
                 return producto2;
             }
-            return new Producto();
+            return null;
         }
 
         public async Task<Resena> PostResena(Resena resena)
@@ -160,7 +160,7 @@ namespace ProductoAppMAUI.Service
                 Carrito carrito2 = JsonConvert.DeserializeObject<Carrito>(json_response);
                 return carrito2;
             }
-            return new Carrito();
+            return null;
         }
 
         public async Task<User> PostUser(User user)
@@ -174,7 +174,7 @@ namespace ProductoAppMAUI.Service
                 User user2 = JsonConvert.DeserializeObject<User>(json_response);
                 return user2;
             }
-            return new User();
+            return null;
         }
 
         public async Task<Producto> PutProducto(int IdProducto, Producto producto)
@@ -199,7 +199,7 @@ namespace ProductoAppMAUI.Service
                 List<Producto> productos = JsonConvert.DeserializeObject<List<Producto>>(json_response);
                 return productos;
             }
-            return new List<Producto>();
+            return null;
         }
 
     }

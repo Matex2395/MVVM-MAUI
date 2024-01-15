@@ -18,10 +18,6 @@
             ContentTemplate="{DataTemplate local:ProductoPage}"
             Icon="{OnPlatform 'icon_clipboard_list.png', iOS='icon_clipboard_list.png', MacCatalyst='icon_clipboard_list.png'}" /> 
         
-        <ShellContent
-            Title="Nuevo Producto"
-            ContentTemplate="{DataTemplate local:NuevoProductoPage}"
-            Icon="{OnPlatform 'icon_plus_circle.png', iOS='icon_plus_circle.png', MacCatalyst='icon_plus_circle.png'}" />
     </TabBar>
     
     <ShellContent

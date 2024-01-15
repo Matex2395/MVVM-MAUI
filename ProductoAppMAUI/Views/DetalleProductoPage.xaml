@@ -5,11 +5,11 @@
              BackgroundColor="White"
              Title="DetalleProductoPage">
     <VerticalStackLayout>
-        <Image Source="{Binding Producto.Imagen}"
+        <Image Source="{Binding ImagenSource}"
                HorizontalOptions="Center"
                HeightRequest="200"/>
         <Label x:Name="Nombre"
-               Text="{Binding Producto.Nombre}"
+               Text="{Binding NombreText}"
                TextColor="Black"
                FontSize="32"
                HorizontalOptions="Center"/>
@@ -18,7 +18,7 @@
                    FontSize="18"
                    TextColor="Black"/>
             <Label x:Name="Cantidad"
-                   Text="{Binding Producto.Cantidad}"
+                   Text="{Binding CantidadText}"
                    FontSize="18"
                    TextColor="Black"/>
         </StackLayout>
@@ -27,7 +27,7 @@
                     FontSize="18"
                    TextColor="Black"/>
             <Label x:Name="Descripcion"
-                    Text="{Binding Producto.Descripcion}"
+                    Text="{Binding DescripcionText}"
                     FontSize="18"
                    TextColor="Black"/>
         </StackLayout>

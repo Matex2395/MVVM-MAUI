@@ -9,35 +9,33 @@ namespace ProductoAppMAUI;
 
 public partial class ProductoPage : ContentPage
 {
-    private readonly APIService _APIService;
-    public ProductoPage(APIService apiservice)
+
+    public ProductoPage()
     {
         InitializeComponent();
-        _APIService = apiservice;
-        BindingContext = new ProductoViewModel(_APIService);
+        BindingContext = new ProductoViewModel();
     }
 
-    protected override async void OnAppearing()
+    protected override void OnAppearing()
     {
         base.OnAppearing();
         string username = Preferences.Get("username", "0");
         User.Text = username;
-        //List<Producto> ListaProducto = await _APIService.GetProductos();
-        //var productos = new ObservableCollection<Producto>(ListaProducto);
-        //ListaProductos.ItemsSource = productos;
+        (BindingContext as ProductoViewModel).LoadProducts();
     }
 
-
-    private async void OnClickShowDetails(object sender, SelectedItemChangedEventArgs e)
+    private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
-        var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en ver producto", ToastDuration.Short, 14);
 
-        await toast.Show();
-        Producto producto = e.SelectedItem as Producto;
-        Preferences.Default.Set("ProductId", producto.IdProducto.ToString());
-        await Navigation.PushAsync(new DetalleProductoPage(_APIService)
+        if (e.SelectedItem is Producto producto)
         {
-            BindingContext = new DetalleProductoViewModel(producto),
-        });
+            Preferences.Default.Set("ProductId", producto.IdProducto.ToString());
+            (BindingContext as ProductoViewModel)?.OnClickShowDetails.Execute(producto);
+        }
     }
-}   
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
+    }
+}

@@ -6,38 +6,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProductoAppMAUI.Models;
+using System.Windows.Input;
+using PropertyChanged;
 
 namespace ProductoAppMAUI.ViewModels
 {
-    public partial class LoginViewModel : ObservableObject
+    [AddINotifyPropertyChangedInterface]
+    public class LoginViewModel
     {
         private APIService _APIService;
-        [ObservableProperty]
-        public string correo;
-        [ObservableProperty]
-        public string password;
+        public string CorreoText { get; set; }
+        public string PasswordText { get; set; }
         public LoginViewModel()
         {
-            
-        }
-        public void IniciarAPIService(APIService apiservice)
-        {
-            _APIService = apiservice;
+            _APIService = new APIService();
+            CorreoText = "";
+            PasswordText = "";
         }
 
-        public async Task<bool> IniciarSesion()
-        {
-            User user2 = await _APIService.GetUser(Correo,Password);
-            if (user2 != null)
+        public ICommand LoginButton =>
+            new Command(async () =>
             {
-                Preferences.Set("username", user2.Nombre);
-                Preferences.Set("IdUser", user2.IdUsuario.ToString());
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+                //Verificar que el formulario no está vacío
+                if (string.IsNullOrWhiteSpace(CorreoText) || string.IsNullOrWhiteSpace(PasswordText))
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "Debe completar todos los campos.", "OK");
+                    return;
+                }
+                else
+                {
+                    User user2 = await _APIService.GetUser(CorreoText, PasswordText);
+                    if (user2 != null)
+                    {
+                        Preferences.Set("username", user2.Nombre);
+                        Preferences.Set("IdUser", user2.IdUsuario.ToString());
+                        await App.Current.MainPage.Navigation.PushAsync(new ProductoPage());
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert("Error", "Usuario o Contraseña no encontrados, verifique que los ingresó correctamente", "OK");
+                        return;
+                    }
+                }
+            });
+
+        public ICommand RegisterButton =>
+                new Command(async () =>
+                {
+                    await App.Current.MainPage.Navigation.PushAsync(new Register());
+                });
     }
 }

@@ -1,4 +1,5 @@
-﻿using ProductoAppMAUI.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using ProductoAppMAUI.Models;
 using ProductoAppMAUI.Service;
 using ProductoAppMAUI.Utils;
 using PropertyChanged;
@@ -15,28 +16,40 @@ namespace ProductoAppMAUI.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class ProductoViewModel
     {
-        private readonly APIService _APIService;
+        private APIService _APIService;
         public ObservableCollection<Producto> ListaProductos { get; set; }
 
-        public ProductoViewModel(APIService _APIService)
+        public ProductoViewModel()
         {
-            // Obtén la lista de productos
-            List<Producto> productosList = _APIService.GetProductos().Result;
-
-            // Inicializa ObservableCollection con la lista de productos
-            ListaProductos = new ObservableCollection<Producto>(productosList);
+            _APIService = new APIService();
         }
+
+        public async void LoadProducts()
+        {
+            ListaProductos = new ObservableCollection<Producto>();
+            var productos = await _APIService.GetProductos();
+            foreach (var p in productos)
+            {
+                ListaProductos.Add(p);
+            }
+        }
+
+        public ICommand OnClickShowDetails =>
+            new Command<Producto>(async (producto) =>
+            {
+                await App.Current.MainPage.Navigation.PushAsync(new DetalleProductoPage(producto));
+            });
 
         public ICommand Logout =>
             new Command(async () =>
             {
                 Preferences.Set("username", "0");
-                await App.Current.MainPage.Navigation.PushAsync(new HomePage(_APIService));
+                await App.Current.MainPage.Navigation.PushAsync(new HomePage());
             });
         public ICommand CarritoView =>
             new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new CarritoPage(_APIService));
+                //await App.Current.MainPage.Navigation.PushAsync(new CarritoPage());
             });
     }
 }

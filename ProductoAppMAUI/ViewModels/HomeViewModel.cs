@@ -13,12 +13,15 @@ namespace ProductoAppMAUI.ViewModels
 
     public class HomeViewModel
     {
-        private readonly APIService _APIService;
+        public HomeViewModel()
+        {
+            
+        }
         public ICommand LoginView =>
             new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new Login(_APIService));
+                await App.Current.MainPage.Navigation.PushAsync(new Login());
             });
     }
-    
+
 }

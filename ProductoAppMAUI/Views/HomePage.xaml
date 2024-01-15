@@ -34,7 +34,8 @@
             <Button
                 Text="Entrar"
                 Command="{Binding LoginView}"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" 
+                BorderColor="Black"/>
 
         </VerticalStackLayout>
     </ScrollView>

@@ -32,34 +32,34 @@
                     <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
                         <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                             <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
-                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Nombre" TextColor="Black" PlaceholderColor="Black" Placeholder="Nombre" Grid.Column="1" />
+                            <handless:BorderlessEntry Text="{Binding NombreText}" VerticalOptions="Center" x:Name="Nombre" TextColor="Black" PlaceholderColor="Black" Placeholder="Nombre" Grid.Column="1" />
                         </Grid>
                     </Frame>
 
                     <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
                         <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                             <Image VerticalOptions="Center" Source="user.png" HeightRequest="25" WidthRequest="25" />
-                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Apellidos" TextColor="Black" PlaceholderColor="Black" Placeholder="Apellidos" Grid.Column="1" />
+                            <handless:BorderlessEntry Text="{Binding ApellidosText}" VerticalOptions="Center" x:Name="Apellidos" TextColor="Black" PlaceholderColor="Black" Placeholder="Apellidos" Grid.Column="1" />
                         </Grid>
                     </Frame>
 
                     <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
                         <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                             <Image VerticalOptions="Center" Source="arroba.png" HeightRequest="25" WidthRequest="25" />
-                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Correo" TextColor="Black" PlaceholderColor="Black" Placeholder="Correo Electrónico" Grid.Column="1" />
+                            <handless:BorderlessEntry Text="{Binding CorreoText}" VerticalOptions="Center" x:Name="Correo" TextColor="Black" PlaceholderColor="Black" Placeholder="Correo Electrónico" Grid.Column="1" />
                         </Grid>
                     </Frame>
 
                     <Frame Padding="10" BorderColor="Transparent" CornerRadius="0">
                         <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                             <Image VerticalOptions="Center" Source="password.png" HeightRequest="25" WidthRequest="25" />
-                            <handless:BorderlessEntry VerticalOptions="Center" x:Name="Contrasenia" TextColor="Black" PlaceholderColor="Black" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
+                            <handless:BorderlessEntry Text="{Binding PasswordText}" VerticalOptions="Center" x:Name="Contrasenia" TextColor="Black" PlaceholderColor="Black" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
                         </Grid>
                     </Frame>
 
                     <Button CornerRadius="0" HeightRequest="60" Text="REGISTRARSE" 
                             FontSize="20" FontAttributes="Bold"
-                            Clicked="OnClickRegister"/>
+                            Command="{Binding RegistrarUsuario}"/>
 
                     <HorizontalStackLayout Spacing="10">
                         <Label  FontAttributes="Bold" TextColor="Gray" Text="¿Ya tiene una cuenta?" VerticalTextAlignment="Center" />
@@ -67,7 +67,7 @@
                            FontAttributes="Bold"
                            TextColor="{x:StaticResource Primary}" />
                         <HorizontalStackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnClickLogInView" />
+                            <TapGestureRecognizer Command="{Binding LoginView}" />
                         </HorizontalStackLayout.GestureRecognizers>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>

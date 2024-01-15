@@ -12,24 +12,40 @@ namespace ProductoAppMAUI.ViewModels
     public class NuevaResenaViewModel
     {
         private readonly APIService _APIService;
-        public Producto Producto { get; set; }
+        public string IdViniloText { get; set; }
+        public string UsernameText { get; set; }
+        public string ComentarioText {  get; set; }
+        public Producto _producto { get; set; }
         public NuevaResenaViewModel(Producto producto)
         {
-            Producto = producto;
+            _APIService = new APIService();
+            _producto = producto;
+            IdViniloText = _producto.IdProducto.ToString();
+            UsernameText = Preferences.Get("username", "0");
+            ComentarioText = "";
         }
-        public ICommand EnviarResenas =>
+        public ICommand EnviarResena =>
             new Command(async () =>
             {
-
-                Resena resena = new Resena()
+                //Verificar que el formulario no está vacío
+                if (string.IsNullOrWhiteSpace(ComentarioText))
                 {
-                    ViniloId = Convert.ToInt32(IdViniloEntry.Text),
-                    Usuario = UsuarioEntry.Text,
-                    Texto = TextoEntry.Text
-                };
+                    await App.Current.MainPage.DisplayAlert("Error", "Debe completar todos los campos.", "OK");
+                    return;
+                }
+                else
+                {
+                    Resena resena = new Resena()
+                    {
+                        ViniloId = Convert.ToInt32(IdViniloText),
+                        Usuario = UsernameText,
+                        Texto = ComentarioText
+                    };
 
-                await _APIService.PostResena(resena);
-                await App.Current.MainPage.Navigation.PopAsync();
+                    await _APIService.PostResena(resena);
+                    await App.Current.MainPage.DisplayAlert("Reseña Agregada", "Su reseña se publicó correctamente.", "OK");
+                    await App.Current.MainPage.Navigation.PopAsync();
+                }
             });
     }
     

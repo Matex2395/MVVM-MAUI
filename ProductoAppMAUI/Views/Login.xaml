@@ -37,7 +37,7 @@
                 <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                     <Image VerticalOptions="Center" Source="arroba.png" HeightRequest="25" WidthRequest="25" />
                     <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Correo" 
-                                              Text="{Binding Correo}"  Placeholder="Correo Electrónico" Grid.Column="1" />
+                                              Text="{Binding CorreoText}"  Placeholder="Correo Electrónico" Grid.Column="1" />
                 </Grid>
             </Frame>
 
@@ -45,7 +45,7 @@
                 <Grid ColumnDefinitions="25,*" ColumnSpacing="10">
                     <Image VerticalOptions="Center" Source="password.png" HeightRequest="25" WidthRequest="25" />
                     <handless:BorderlessEntry TextColor="Black" PlaceholderColor="Black" VerticalOptions="Center" x:Name="Contrasenia" 
-                                              Text="{Binding Password}" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
+                                              Text="{Binding PasswordText}" Placeholder="Contraseña" IsPassword="True" Grid.Column="1" />
                 </Grid>
             </Frame>
 
@@ -57,7 +57,7 @@
                            FontAttributes="Bold"
                            TextColor="{x:StaticResource Primary}" />
                 <HorizontalStackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding RegisterButton}" />
+                        <TapGestureRecognizer Command="{Binding RegisterButton}" />
                 </HorizontalStackLayout.GestureRecognizers>
             </HorizontalStackLayout>
         </VerticalStackLayout>
