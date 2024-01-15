@@ -24,9 +24,17 @@ namespace ProductoAppMAUI.ViewModels
         {
             ListaResenas = new ObservableCollection<Resena>();
             var resenas = await _APIService.GetResenas(Preferences.Default.Get("ProductId", "0").ToString());
-            foreach (var p in resenas)
+            if (resenas != null && resenas.Count > 0)
             {
-                ListaResenas.Add(p);
+                foreach (var p in resenas)
+                {
+                    ListaResenas.Add(p);
+                }
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Nada que ver aquí...","Aún no hay reseñas para este producto","OK");
+                return;
             }
         }
     }

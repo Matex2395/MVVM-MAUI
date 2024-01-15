@@ -46,10 +46,10 @@ namespace ProductoAppMAUI.ViewModels
                 Preferences.Set("username", "0");
                 await App.Current.MainPage.Navigation.PushAsync(new HomePage());
             });
-        public ICommand CarritoView =>
+        public ICommand VerCarrito =>
             new Command(async () =>
             {
-                //await App.Current.MainPage.Navigation.PushAsync(new CarritoPage());
+                await App.Current.MainPage.Navigation.PushAsync(new CarritoPage());
             });
     }
 }

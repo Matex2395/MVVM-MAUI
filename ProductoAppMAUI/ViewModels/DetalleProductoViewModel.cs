@@ -24,6 +24,7 @@ namespace ProductoAppMAUI.ViewModels
         public string NombreText { get; set; }
         public string CantidadText { get; set; }
         public string DescripcionText { get; set; }
+        public string PrecioText { get; set; }
         public DetalleProductoViewModel(Producto producto)
         {
             _APIService = new APIService();
@@ -33,16 +34,23 @@ namespace ProductoAppMAUI.ViewModels
             NombreText = _producto.Nombre;
             CantidadText = _producto.Stock.ToString();
             DescripcionText = _producto.Descripcion;
+            PrecioText = _producto.Precio.ToString();
         }
 
         public ICommand DejarResena =>
-            new Command<Producto>(async (producto) =>
+            new Command(async () =>
             {
-                await App.Current.MainPage.Navigation.PushAsync(new NuevaResenaPage(producto));
+                Producto producto2 = new Producto()
+                {
+                    IdProducto = Convert.ToInt32(ViniloId),
+                    Nombre = NombreText,
+                    Descripcion = DescripcionText,
+                    Precio = Convert.ToDecimal(PrecioText),
+                    Stock = Convert.ToInt32(CantidadText),
+                    Imagen = ImagenSource
+                };
+                await App.Current.MainPage.Navigation.PushAsync(new NuevaResenaPage(producto2));
             });
-
-
-
         public ICommand VerResenas =>
             new Command(async () =>
             {
@@ -56,10 +64,9 @@ namespace ProductoAppMAUI.ViewModels
             new Command(async () =>
             {
                 string IdUsuario = Preferences.Default.Get("IdUser", "0");
-                //string IdProducto = Producto.IdProducto.ToString();
 
-
-                await _APIService.PostProductoEnCarrito(IdUsuario, IdProducto);
+                await _APIService.PostProductoEnCarrito(IdUsuario, ViniloId);
+                await App.Current.MainPage.DisplayAlert("Producto Agregado al Carrito", "El producto se agregó correctamente a tu Carrito.", "OK");
                 var toast = Toast.Make("Producto Agregado a tu Carrito", ToastDuration.Short, 14);
                 await toast.Show();
                 await App.Current.MainPage.Navigation.PopAsync();

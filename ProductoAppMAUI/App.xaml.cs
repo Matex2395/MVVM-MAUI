@@ -6,11 +6,12 @@ namespace ProductoAppMAUI
 {
     public partial class App : Application
     {
-        public static APIService APIService { get; set; }
         public App()
         {
             InitializeComponent();
-            APIService aPIService = new APIService();
+            MainPage = new NavigationPage(new HomePage());
+
+            /*MainPage = new AppShell();*/
 
             //            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(BorderlessEntry), (handler, view) =>
             //            {
@@ -23,11 +24,6 @@ namespace ProductoAppMAUI
             //#endif
             //                }
             //            });
-
-            MainPage = new NavigationPage(new HomePage(aPIService));
-            Preferences.Set("username", "0");
-            //MainPage = new AppShell();
-
         }
     }
 }

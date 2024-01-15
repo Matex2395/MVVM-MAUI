@@ -33,9 +33,4 @@ public partial class ProductoPage : ContentPage
             (BindingContext as ProductoViewModel)?.OnClickShowDetails.Execute(producto);
         }
     }
-
-    private void Button_Clicked(object sender, EventArgs e)
-    {
-
-    }
 }

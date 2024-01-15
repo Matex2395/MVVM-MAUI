@@ -6,7 +6,7 @@
              Title="CarritoPage">
     <VerticalStackLayout>
         <Label Text="¡Bienvenido a tu Carrito de Compras!" FontAttributes="Bold" FontSize="25" TextColor="Black" Margin="10"/>
-        <ListView x:Name="ListaCarritos" ItemsSource="{Binding Carrito}" HasUnevenRows="True" ItemSelected="OnClickDetails">
+        <ListView x:Name="ListaCarrito" ItemsSource="{Binding ListaCarrito}" HasUnevenRows="True" ItemSelected="OnClickDetails">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -46,7 +46,7 @@
                             <Image Grid.Column="3" VerticalOptions="Center" Source="delete.png" 
    WidthRequest="75" HeightRequest="40">
                                 <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TappedDeleteFromCart"/>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                 </Image.GestureRecognizers>
                             </Image>
 
@@ -66,7 +66,7 @@
                 BackgroundColor="{x:StaticResource Primary}"
                 BorderColor="Black"
                 BorderWidth="1"
-                Clicked="OnClickComprar" 
+                Command="{Binding Comprar}" 
                 HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>
